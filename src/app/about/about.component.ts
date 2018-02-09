@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class AboutComponent implements OnInit {
 
   goals: any;
+  public employee  =  [];
 
   constructor(private route: ActivatedRoute, private router: Router, private _data: DataService) {
     this.route.params.subscribe(res => console.log(res.id));
@@ -18,6 +19,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this._data.goal.subscribe(res => this.goals = res);
+    this._data.getEmployees().subscribe(res => console.log(res));
   }
 
   sendMeHome() {
